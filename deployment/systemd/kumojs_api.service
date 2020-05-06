@@ -1,0 +1,13 @@
+[Unit]
+Description=Kumojs API service
+After=network.target
+
+[Service]
+WorkingDirectory=/home/edward/src/kumojs/kumojs
+ExecStart=/usr/bin/npm run server
+Restart=on-failure
+User=edward
+Environment=KUMO_SERVER_PORT=18084
+
+[Install]
+WantedBy=multi-user.target
