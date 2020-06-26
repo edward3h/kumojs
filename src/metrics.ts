@@ -15,7 +15,7 @@ const modeValue = (mode:string) : number => {
 };
 
 const help = (metric:string, description:string) => `# HELP ${prefix}${metric} ${description}`;
-const type = (metric:string) => `# TYPE ${prefix}${metric} guage`; // we only use Guages for this
+const type = (metric:string) => `# TYPE ${prefix}${metric} gauge`; // we only use Gauges for this
 const value = (metric:string, labels:object, value:number) => {
     let labelString = Object.entries(labels).map(([k, v]) => `${k}="${v}"`).join(',');
     return `${prefix}${metric}{${labelString}} ${value}`;
@@ -32,6 +32,7 @@ export default (kumo : Kumo): RequestHandler => {
             })
         )
         .then(rs => {
+            console.log('GET /metrics');
             const lines: string[] = [];
             // current temperature
             let metric = "temperature_current_Imperial";
