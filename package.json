@@ -12,9 +12,10 @@
     "sjcl": "^1.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.19",
-    "typescript": "^2.4.2",
-    "body-parser": "^1.17"
+    "@types/express": "^4.17.6",
+    "@types/node": "^8.10.61",
+    "body-parser": "^1.17",
+    "typescript": "^2.4.2"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc",

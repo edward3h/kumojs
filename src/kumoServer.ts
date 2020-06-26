@@ -10,7 +10,7 @@ const app = express()
 const SKumo = require('./kumojs').Kumo;
 const Scfg = require('./kumo.cfg');
 var kumo = new SKumo(Scfg);
-
+import metrics from './metrics';
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -170,6 +170,8 @@ app.put('/v0/room/:room/heat/demand/:demand', function(req:ExpCB, res:ExpCB){
             }).catch(function(e:any) { rerr(res, e);});
     } catch(e) {rerr(res, e); }
 });
+
+app.get('/metrics', metrics(kumo));
 
 app.listen(port, function() {
     console.log("App is running on port:", port)
